@@ -1201,7 +1201,7 @@ client.on('message', message => {
 client.on('message', message => {
     if (true) {
   if (message.content === '#help-js-bc-4') {
-        message.author.send('  **⦁Brodcast + Role Code  | ** https://pastebin.com/3K0nZV8N    ').catch(e => console.log(e.stack));
+        message.author.send('  **⦁Brodcast + All + With Mention + Not Developed Code  | ** https://pastebin.com/ygHw6vAr    ').catch(e => console.log(e.stack));
    
       }
      }
@@ -1210,6 +1210,29 @@ client.on('message', message => {
    
   client.on('message', message => {
        if (message.content === "#help-js-bc-4") {
+       let embed = new Discord.RichEmbed()
+    .setAuthor(message.author.username)
+    .setColor("#9B59B6")
+    .addField(" **Done :wink: ** " , "** The code has been sent in the private conversation :ok_hand:**")
+       
+       
+       
+    message.channel.sendEmbed(embed);
+      }
+  });
+//help js bc 5
+client.on('message', message => {
+    if (true) {
+  if (message.content === '#help-js-bc-5') {
+        message.author.send('  **⦁Brodcast + Role Code  | ** https://pastebin.com/3K0nZV8N    ').catch(e => console.log(e.stack));
+   
+      }
+     }
+    });
+   
+   
+  client.on('message', message => {
+       if (message.content === "#help-js-bc-5") {
        let embed = new Discord.RichEmbed()
     .setAuthor(message.author.username)
     .setColor("#9B59B6")
