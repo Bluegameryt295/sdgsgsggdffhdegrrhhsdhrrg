@@ -624,9 +624,9 @@ client.on('message', message => {
     }).then(invite =>
       message.author.sendMessage(invite.url)
     )
-  message.channel.send("**The link was sent with a private message**")
+  message.channel.send("**There you go :arrow_down: **")
 
-message.author.send(`**Link duration: day
+message.channel.send(`**Link duration: day
 Number of uses of the link : 100**`)
 
 
