@@ -1374,7 +1374,10 @@ client.on('guildMemberRemove', member => {
 });
 
 
-
+//Auto Role
+client.on('guildMemberAdd', (member) => {
+    member.addRole(member.guild.roles.find('name', 'Member'));
+    });
 
 
 
