@@ -703,7 +703,33 @@ client.on('guildMemberAdd', member => {
   }); 
 });
 
+//Voice Count
+var ss = 0;
 
+client.on('voiceStateUpdate', (o,n) => {
+    if (o.voiceChannel && !n.voiceChannel) {
+        ss-=1
+        n.guild.channels.get("484401627214774302").edit({
+            name : "Voice Online : [" + ss+ "]"
+        })
+    };
+    if (n.voiceChannel && !o.voiceChannel) {
+        ss+=1
+        n.guild.channels.get("484401627214774302").edit({
+            name : "Voice Online : [" + ss+ "]"
+        })
+    }
+})
+client.on("ready", () => {
+    client.guilds.get("483027189588164608").members.forEach(m => {
+        if (m.voiceChannel) {
+            ss+=1
+        };
+        client.channels.get("484401627214774302").edit({
+            name : "Voice Online : [" + ss+ "]"
+        })
+    });
+  });
 
 
 
