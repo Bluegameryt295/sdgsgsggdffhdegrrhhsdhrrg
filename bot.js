@@ -1474,8 +1474,49 @@ client.on('guildMemberAdd', (member) => {
     member.addRole(member.guild.roles.find('name', 'Member'));
     });
 
+//Pic vids channel
+client.on('message', ( message ) => {
+  if(message.author.bot) return;
 
+  if(message.channel.id !== '484412854943088671') return;
 
+  let types = [
+    'jpg',
+    'jpeg',
+    'png',
+    'gif',
+    'mp4',
+    'avi',
+    'mkv',
+    'mpeg'
+  ]
+
+  if (message.attachments.size <= 0) {
+    message.delete();
+    message.channel.send(`${message.author}, **This channel for pics and videos only!**`)
+    .then(msg => {
+      setTimeout(() => {
+        msg.delete();
+      }, 5000)
+  })
+  return;
+}
+
+  if(message.attachments.size >= 1) {
+    let filename = message.attachments.first().filename
+    console.log(filename);
+    if(!types.some( type => filename.endsWith(type) )) {
+      message.delete();
+      message.channel.send(`${message.author}, This channel for pics and videos only!`)
+      .then(msg => {
+        setTimeout(() => {
+          msg.delete();
+        }, 5000)
+      })
+    }
+  }
+
+});
 
 
 
