@@ -34,20 +34,6 @@ client.user.setActivity(`Playing`,"#help")
     console.log(`Logged in as * [ " ${client.user.username} " ] Users! [ " ${client.users.size} " ]`);
     console.log(`Logged in as * [ " ${client.user.username} " ] channels! [ " ${client.channels.size} " ]`);
   }); 
-  
-  client.on('ready', () => {
-     console.log(`----------------`);
-        console.log(`Made By _xShaDowZx - Script By : _xShaDowZx`);
-          console.log(`----------------`);
-        console.log(`ON ${client.guilds.size} Servers '     Script By : _xShaDowZx ' `);
-      console.log(`----------------`);
-    console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setActivity(`#help`,"#")
-  client.user.setStatus("Online")
-  });
-  client.on("guildCreate", guild => {
-    console.log(` Join Bot Of Server ${guild.name} Owner Of Server ${guild.owner.user.username}!`)
-  });
 
 //warn 
 client.on('message', msg => { 
