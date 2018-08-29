@@ -620,7 +620,16 @@ Number of uses of the link : 100**`)
   .catch(console.error);
 }
 });
-
+//Show all banned members
+  client.on('message', message => {
+    if(message.content == '#banned'){
+        message.guild.fetchBans().then(bans => {
+            bans.forEach(user => {
+               message.channel.send('\`#\` <@'+ user.id + '>');
+            });
+        });
+    }
+});
 //Mention Bot
   client.on('message', message => {
   if(message.content == "<@" + `${client.user.id}` + ">"){
