@@ -410,13 +410,12 @@ message.channel.stopTyping();
 
 //Welcome
 client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', '👋-welcome');
+    let channel = member.guild.channels.find('name', '❋-welcome');
     let memberavatar = member.user.avatarURL
       if (!channel) return;
     let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setThumbnail(memberavatar)
-        .addField(':running_shirt_with_sash: | name :  ',`${member}`)
         .addField(':loudspeaker: | Welcome to Codes' , `Welcome to the server, ${member}`)
         .addField(':id: | user :', "**[" + `${member.id}` + "]**" )
                 .addField('➡| You are the member number',`${member.guild.memberCount}`)
@@ -441,7 +440,7 @@ client.on('guildMemberAdd', member => {
         .setColor('RED')
         .setFooter(`==== We wish you the best ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
     
-    var channel =member.guild.channels.find('name', '😢-good-bye')
+    var channel =member.guild.channels.find('name', '❋-good-bye')
     if (!channel) return;
     channel.send({embed : embed});
     });
@@ -632,9 +631,67 @@ Number of uses of the link : 100**`)
 
     }
 });
+//Total Ban
+  client.on('message', message => {
+     if(message.content.startsWith(prefix +"bans")) {
+        message.guild.fetchBans()
+        .then(bans => message.channel.send(`**This Server have :arrow_right: __${bans.size}__ users got __banned__**`))
+  .catch(console.error);
+}
+});
 
-
-
+//Mention Bot
+  client.on('message', message => {
+  if(message.content == "<@" + `${client.user.id}` + ">"){
+    var embed = new Discord.RichEmbed() 
+    .setAuthor(message.author.username)
+    .setThumbnail(message.author.avatarURL)
+    .setFooter(`Requested By | ${message.author.username}`)
+    .setColor("RANDOM")
+    .addField(`${prefix}help`, "**to show The Help List**")
+    message.channel.send({embed})
+  } 
+});
+//Auto Mute
+  client.on('message', async message => {
+            if(message.content.includes('discord.gg')){ 
+                if(message.member.hasPermission("MANAGE_GUILD")) return;
+        if(!message.channel.guild) return;
+        message.delete()
+          var command = message.content.split(" ")[0];
+    let muterole = message.guild.roles.find(`name`, "Muted");
+    if(!muterole){
+      try{
+        muterole = await message.guild.createRole({
+          name: "Muted",
+          color: "RANDOM",
+          permissions:[]
+        })
+        message.guild.channels.forEach(async (channel, id) => {
+          await channel.overwritePermissions(muterole, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false
+          });
+        });
+      }catch(e){
+        console.log(e.stack);
+      }
+    }
+           if(!message.channel.guild) return message.reply('** This command only for servers**');
+     message.member.addRole(muterole);
+    const embed500 = new Discord.RichEmbed()
+      .setTitle("Muted")
+            .addField(`**  You Have Been Muted **` , `**Reason : Advertising Another Discord Link**`)
+            .setColor("RANDOM")
+            .setThumbnail(`${message.author.avatarURL}`)
+            .setAuthor(message.author.username, message.author.avatarURL)
+        .setFooter(`${message.guild.name} `)
+     message.channel.send(embed500)
+     message.author.send('**You have been __Muted__ Reason : Advertising Another Discord Link**');
+   
+       
+    }
+});
 
 
 
