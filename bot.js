@@ -712,7 +712,7 @@ client.on('guildMemberAdd', member => {
     const codes = member.guild.channels.find("name", "❋-invite-tracking");
     
   
-     codes.send(`<@${member.user.id}> **joined;** Invited by <@${inviter.id}> (**${invite.uses}** invites)`);
+     codes.send(`<@${member.user.id}> **joined;** Invited by **<@${inviter.id}>** (**${invite.uses}** invites)`);
    //  codes.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
   }); 
 });
