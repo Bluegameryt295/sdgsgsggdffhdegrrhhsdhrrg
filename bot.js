@@ -692,8 +692,30 @@ Number of uses of the link : 100**`)
        
     }
 });
+//Invite Manager
+const invites = {};
+const wait = require('util').promisify(setTimeout);
+client.on('ready', () => {
+  wait(1000);
 
-
+  client.guilds.forEach(g => {
+    g.fetchInvites().then(guildInvites => {
+      invites[g.id] = guildInvites;
+    });
+  });
+});
+client.on('guildMemberAdd', member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const codes = member.guild.channels.find("name", "❋-invite-tracking");
+    
+  
+     codes.send(`<@${member.user.id}> **joined;** Invited by <@${inviter.id}> (**${invite.uses}** invites)`);
+   //  codes.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
+  }); 
+});
 
 
 
