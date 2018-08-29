@@ -633,7 +633,7 @@ Number of uses of the link : 100**`)
 });
 //Total Ban
   client.on('message', message => {
-     if(message.content.startsWith(prefix +"bans")) {
+     if(message.content.startsWith(prefix +"Totalban")) {
         message.guild.fetchBans()
         .then(bans => message.channel.send(`**This Server have :arrow_right: __${bans.size}__ users got __banned__**`))
   .catch(console.error);
