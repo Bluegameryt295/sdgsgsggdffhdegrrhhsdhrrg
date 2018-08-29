@@ -622,7 +622,7 @@ Number of uses of the link : 100**`)
 });
 //Show all banned members
   client.on('message', message => {
-    if(message.content == '#banned'){
+    if(message.content == '#8b8an454n4e5445d'){
         message.guild.fetchBans().then(bans => {
             bans.forEach(user => {
                message.channel.send('\`#\` <@'+ user.id + '>');
