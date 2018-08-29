@@ -400,7 +400,7 @@ client.on('guildMemberAdd', member => {
     let memberavatar = member.user.avatarURL
       if (!channel) return;
     let embed = new Discord.RichEmbed()
-        .setTitle("New Member joind!")
+        .setTitle("New Member joined!")
         .setColor("RANDOM")
         .setThumbnail(member.user.avatarURL)
         .addField("**Member name**", `[<@${member.user.id}>]`,true)
