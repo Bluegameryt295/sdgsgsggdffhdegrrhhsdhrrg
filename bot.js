@@ -1449,19 +1449,19 @@ message.channel.send(image)
 
 //Count
 client.on('guildMemberAdd', member => {
-    member.guild.channels.get('483945437426876416').setName(`Total Users: ${member.guild.memberCount}`);
+    member.guild.channels.get('483945437426876416').setName(`Total Users: [${member.guild.memberCount}]`);
     let humans = member.guild.memberCount - member.guild.members.filter(m => m.user.bot).size
-    member.guild.channels.get('483945478019612680').setName(`Total Humans: ${humans}`);
+    member.guild.channels.get('483945478019612680').setName(`Total Humans: [${humans}]`);
     let bots = member.guild.members.filter(m => m.user.bot).size
-    member.guild.channels.get('483945930001743894').setName(`Total Bots: ${bots}`);
+    member.guild.channels.get('483945930001743894').setName(`Total Bots: [${bots}]`);
 });
 
 client.on('guildMemberRemove', member => {
-    member.guild.channels.get('483945437426876416').setName(`Total Users: ${member.guild.memberCount}`);
+    member.guild.channels.get('483945437426876416').setName(`Total Users: [${member.guild.memberCount}]`);
     let humans = member.guild.memberCount - member.guild.members.filter(m => m.user.bot).size
-    member.guild.channels.get('483945478019612680').setName(`Total Humans: ${humans}`);
+    member.guild.channels.get('483945478019612680').setName(`Total Humans: [${humans}]`);
     let bots = member.guild.members.filter(m => m.user.bot).size
-    member.guild.channels.get('483945930001743894').setName(`Total Bots: ${bots}`);
+    member.guild.channels.get('483945930001743894').setName(`Total Bots: [${bots}]`);
 });
 
 
